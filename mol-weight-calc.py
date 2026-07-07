@@ -17,9 +17,13 @@ if __name__ == "__main__":
         print("Error: Please provide a formula using -f or --formula")
         exit(1)
 
-    elements = parser.parse_formula(args.formula)
-    weight = calculator.calculate_weight(elements)
-
+    try:
+        elements = parser.parse_formula(args.formula)
+        weight = calculator.calculate_weight(elements)
+    except calculator.UnknownElementError as e:
+        print(f"Error: {e}")
+        exit(1)
+        
     if args.verbose:
         print(f"\nDetailed Breakdown for {args.formula}:")
         print("-" * 42)

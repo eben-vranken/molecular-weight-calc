@@ -1,3 +1,5 @@
+import sys
+
 atomic_weights = {
     "H": 1.0080,
     "He": 4.002602,
@@ -119,14 +121,20 @@ atomic_weights = {
     "Og": 294
 }
 
+class UnknownElementError(Exception):
+    def __init__(self, element: str):
+        self.element = element
+        super().__init__(f"Element {element} does not exist.")
+
 def calculate_weight(elements_with_count: dict[str, int]):
-    weight = 0
+    weight = 0.0
     for elem in elements_with_count:
         count = elements_with_count[elem]
         
         try:
             weight += atomic_weights[elem] * count
         except KeyError:
-            print("Element", elem, "does not exist.")
+            raise UnknownElementError(elem) from None
+    
             
     return weight
