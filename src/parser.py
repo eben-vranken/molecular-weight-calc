@@ -1,5 +1,3 @@
-import calculator
-
 def parse_formula(formula: str):
     elements = {
 
