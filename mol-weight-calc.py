@@ -13,10 +13,9 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
 
-    elements = parser.parse_formula(args.formula)
-    weight = calculator.calculate_weight(elements)
-
-    if args.verbose:
-        print("Table!")
-
-    print(f"%.3fg" % weight)
+    try:
+        elements = parser.parse_formula(args.formula)
+        weight = calculator.calculate_weight(elements)
+        print(f"%.3fg" % weight)
+    except:
+        print("No flags given")
