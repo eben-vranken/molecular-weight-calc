@@ -31,14 +31,3 @@ def parse_formula(formula: str):
         elements[current_elem] = int(current_count)
     
     return elements
-
-
-if __name__ == "__main__":
-    test_formula = "Fe13HO5"
-    test_elements = parse_formula(test_formula)
-
-    print(test_elements)
-
-    w = calculator.calculate_weight(test_elements)
-    
-    print(f"%.3fg" % w)

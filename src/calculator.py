@@ -1,4 +1,4 @@
-weights = {
+atomic_weights = {
     "H": 1.0080,
     "He": 4.002602,
     "Li": 6.94,
@@ -118,3 +118,11 @@ weights = {
     "Ts": 293,
     "Og": 294
 }
+
+def calculate_weight(elements_with_count: dict[str, int]):
+    weight = 0
+    for elem in elements_with_count:
+        count = elements_with_count[elem]
+        weight += atomic_weights[elem] * count
+    
+    return weight
