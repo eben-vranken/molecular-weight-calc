@@ -123,6 +123,10 @@ def calculate_weight(elements_with_count: dict[str, int]):
     weight = 0
     for elem in elements_with_count:
         count = elements_with_count[elem]
-        weight += atomic_weights[elem] * count
-    
+        
+        try:
+            weight += atomic_weights[elem] * count
+        except KeyError:
+            print("Element", elem, "does not exist.")
+            
     return weight
