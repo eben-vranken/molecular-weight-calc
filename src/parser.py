@@ -15,7 +15,7 @@ def parse_formula(formula: str):
                 if not current_count:
                     current_count = "1"
                 
-                elements[current_elem] = int(current_count)
+                elements[current_elem] = elements.get(current_elem, 0) + int(current_count)
                 
             current_elem = c
             current_count = ""
@@ -26,6 +26,6 @@ def parse_formula(formula: str):
     if current_elem:
         if not current_count:
             current_count = "1"
-        elements[current_elem] = int(current_count)
+        elements[current_elem] = elements.get(current_elem, 0) + int(current_count)
     
     return elements
